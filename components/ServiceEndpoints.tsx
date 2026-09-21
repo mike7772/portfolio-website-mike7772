@@ -15,7 +15,7 @@ const domains = [
     title: 'Backend Architecture',
     icon: Server,
     description: 'Designing scalable microservices and event-driven systems. Expert in handling high-throughput data pipelines and ensuring system reliability.',
-    tags: ['Node.js', 'Python', 'Django', 'PostgreSQL', 'Redis', 'NestJS', 'FastAPI', 'ElasticSearch'],
+    tags: ['Node.js', 'Python', 'Django', 'PostgreSQL', 'MariaDB', 'Redis', 'NestJS', 'FastAPI', 'ElasticSearch'],
     color: 'text-emerald-600 dark:text-emerald-400',
     bg: 'bg-emerald-500/10'
   },

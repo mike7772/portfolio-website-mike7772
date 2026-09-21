@@ -6,7 +6,7 @@ import { TechCategory } from '../types';
 const techStack: TechCategory[] = [
   {
     category: 'Compute & Runtime',
-    items: ['Node.js (Advanced)', 'Python', 'Go', 'Typescript']
+    items: ['Node.js (Advanced)', 'Python', 'Go', 'Typescript', 'C']
   },
   {
     category: 'Frontend Ecosystem',
@@ -14,7 +14,7 @@ const techStack: TechCategory[] = [
   },
   {
     category: 'Data Persistence',
-    items: ['PostgreSQL', 'Redis', 'MongoDB', 'ElasticSearch']
+    items: ['PostgreSQL', 'Redis', 'MongoDB', 'MariaDB', 'ElasticSearch']
   },
   {
     category: 'DevOps & Infra',

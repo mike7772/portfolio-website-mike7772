@@ -37,15 +37,18 @@ export const Hero: React.FC = () => {
             <Button variant="default" className="gap-2" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
               View Projects <ArrowRight size={14} />
             </Button>
-            <Button variant="outline" className="gap-2" onClick={() => window.open('mailto:michaelasnake.dev@gmail.com')}>
+            <Button variant="outline" className="gap-2" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
               <Mail size={14} /> Get in touch
+            </Button>
+            <Button variant="ghost" className="gap-2" onClick={() => window.open('/resume.pdf', '_blank')}>
+              <Download size={14} /> Download Resume
             </Button>
           </div>
 
           <div className="flex gap-6 pt-6 text-muted-foreground">
              <div className="flex flex-col gap-1">
                 <span className="text-xs font-mono uppercase tracking-wider">Experience</span>
-                <span className="text-sm font-semibold text-foreground">4+ Years</span>
+                <span className="text-sm font-semibold text-foreground">5+ Years</span>
              </div>
              <div className="w-px bg-border h-full" />
              <div className="flex flex-col gap-1">

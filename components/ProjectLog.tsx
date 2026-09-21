@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChevronDown, Code, Layout, Server, Database, GitCommit, ArrowUpRight, Image as ImageIcon, ExternalLink, Globe } from 'lucide-react';
+import { ChevronDown, Code, Layout, Server, Database, GitCommit, ArrowUpRight, ExternalLink, Globe } from 'lucide-react';
 import { Badge, Button, Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from './ui/Primitives';
+import { ImageGallery } from './ui/ImageGallery';
 import { Project } from '../types';
 import { projects } from '../data/projects';
 
@@ -151,51 +152,39 @@ export const ProjectLog: React.FC = () => {
       {/* Detail Modal */}
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
         <DialogContent onClose={() => setModalOpen(false)} className="sm:max-w-[900px]">
-           <DialogHeader>
-              <div className="flex items-center gap-3 mb-2">
-                 <Badge variant="outline">{selectedProject?.year}</Badge>
-                 <span className="text-xs font-mono text-muted-foreground">{selectedProject?.company}</span>
-                 {selectedProject?.url && (
-                    <a href={selectedProject.url} target="_blank" rel="noopener noreferrer" className="ml-auto md:ml-0">
-                       <Badge variant="secondary" className="hover:bg-emerald-500/10 hover:text-emerald-600 transition-colors cursor-pointer gap-1">
-                          <Globe size={10} /> Live
-                       </Badge>
-                    </a>
-                 )}
-              </div>
-              <DialogTitle className="text-2xl">{selectedProject?.name}</DialogTitle>
-              <DialogDescription className="text-base">{selectedProject?.metric}</DialogDescription>
-           </DialogHeader>
-
-           <div className="mt-6 space-y-8">
-              {/* Screenshots Gallery */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                 {selectedProject?.screenshots && selectedProject.screenshots.length > 0 ? (
-                    selectedProject.screenshots.map((src, idx) => (
-                       <div key={idx} className="relative aspect-video rounded-lg overflow-hidden border border-border bg-muted group">
-                          <img 
-                            src={src} 
-                            alt={`${selectedProject.name} screenshot ${idx + 1}`}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                            onError={(e) => {
-                               // Fallback if image not found
-                               (e.target as HTMLImageElement).style.display = 'none';
-                               (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
-                            }}
-                          />
-                          {/* Fallback Placeholder displayed if img fails */}
-                          <div className="hidden absolute inset-0 flex flex-col items-center justify-center bg-secondary/50 p-4 text-center">
-                             <span className="text-xs text-muted-foreground font-mono mb-2">Image not found</span>
-                             <span className="text-[10px] text-muted-foreground opacity-50">{src}</span>
-                          </div>
-                       </div>
-                    ))
-                 ) : (
-                    <div className="col-span-full h-48 rounded-lg bg-secondary/30 border border-border border-dashed flex items-center justify-center">
-                       <span className="text-muted-foreground text-sm">No screenshots available</span>
+           {/* Fixed header */}
+           <div className="shrink-0 p-6 pb-5 border-b border-border">
+              <DialogHeader>
+                 <div className="flex items-center gap-3 mb-2 pr-8">
+                    <Badge variant="outline">{selectedProject?.year}</Badge>
+                    <span className="text-xs font-mono text-muted-foreground">{selectedProject?.company}</span>
+                    {selectedProject?.url && (
+                       <a href={selectedProject.url} target="_blank" rel="noopener noreferrer" className="ml-auto md:ml-0">
+                          <Badge variant="secondary" className="hover:bg-emerald-500/10 hover:text-emerald-600 transition-colors cursor-pointer gap-1">
+                             <Globe size={10} /> Live
+                          </Badge>
+                       </a>
+                    )}
+                 </div>
+                 <DialogTitle className="text-2xl">{selectedProject?.name}</DialogTitle>
+                 <DialogDescription className="text-base">{selectedProject?.metric}</DialogDescription>
+                 {selectedProject?.stack && (
+                    <div className="flex flex-wrap gap-2 mt-3">
+                       {selectedProject.stack.map((tech) => (
+                          <Badge key={tech} variant="secondary" className="bg-secondary text-secondary-foreground font-normal border-transparent">
+                             {tech}
+                          </Badge>
+                       ))}
                     </div>
                  )}
-              </div>
+              </DialogHeader>
+           </div>
+
+           {/* Scrollable body */}
+           <div className="flex-1 overflow-y-auto p-6 space-y-8">
+              {selectedProject && (
+                 <ImageGallery images={selectedProject.screenshots ?? []} alt={selectedProject.name} />
+              )}
 
               {/* Info Grid */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -205,7 +194,7 @@ export const ProjectLog: React.FC = () => {
                        {selectedProject?.fullDescription || selectedProject?.description}
                     </p>
                  </div>
-                 
+
                  <div className="space-y-4">
                     <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Key Features</h4>
                     <ul className="space-y-2">
@@ -218,20 +207,20 @@ export const ProjectLog: React.FC = () => {
                     </ul>
                  </div>
               </div>
+           </div>
 
-              {/* Footer Actions */}
-              <div className="pt-6 border-t border-border flex justify-between items-center">
-                 <Button variant="outline" onClick={() => setModalOpen(false)}>Close Details</Button>
-                 
-                 {selectedProject?.url && (
-                    <Button 
-                       className="gap-2" 
-                       onClick={() => window.open(selectedProject.url, '_blank')}
-                    >
-                       Visit Live Site <ExternalLink size={14} />
-                    </Button>
-                 )}
-              </div>
+           {/* Fixed footer */}
+           <div className="shrink-0 p-6 pt-4 border-t border-border flex justify-between items-center bg-background">
+              <Button variant="outline" onClick={() => setModalOpen(false)}>Close Details</Button>
+
+              {selectedProject?.url && (
+                 <Button
+                    className="gap-2"
+                    onClick={() => window.open(selectedProject.url, '_blank')}
+                 >
+                    Visit Live Site <ExternalLink size={14} />
+                 </Button>
+              )}
            </div>
         </DialogContent>
       </Dialog>

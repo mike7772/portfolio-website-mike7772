@@ -12,9 +12,12 @@ export const projects: Project[] = [
     description: 'A comprehensive crowdfunding platform for the Ethiopian Securities Exchange.',
     fullDescription: 'Designed the system architecture and implemented a comprehensive crowdfunding platform for ESX. The platform acts as a critical bridge facilitating secure interactions between investors, share providers, companies, and campaigns, ensuring compliance and data integrity.',
     features: ['Investor/Campaign Portals', 'Real-time Share Tracking', 'Secure Document Handling', 'Regulatory Compliance Tools', 'Dynamic Reporting'],
-    url: 'https://cfipstaging.esx.et', 
+    url: 'https://cfipstaging.esx.et',
     screenshots: [
-        '/projects/esx/landing.png'
+        '/projects/esx/landing.png',
+        '/projects/esx/discover.png',
+        '/projects/esx/raise-capital.png',
+        '/projects/esx/how-it-works.png'
     ]
   },
   {
@@ -84,6 +87,98 @@ export const projects: Project[] = [
     description: 'Seamlessly integratable payment gateway for Ethiopian merchants.',
     fullDescription: 'Contributed to the development of MedaPay, focusing on the frontend SDK widget that allows merchants to easily embed payment forms. Ensured the backend transaction processing was secure, idempotent, and compliant with local financial regulations.',
     features: ['Embeddable Payment Widget', 'Idempotent Transactions', 'Merchant Dashboard', 'Webhook System'],
+    url: null,
+    screenshots: []
+  },
+  {
+    id: 'p_notify',
+    name: 'Notification Microservice',
+    company: '360Ground',
+    role: 'System Architect & Lead Developer',
+    year: '2021–2025',
+    stack: ['Node.js', 'Microservices', 'Email/SMS'],
+    metric: 'Unified Comms Layer',
+    description: 'Notification microservice streamlining user communications via email and SMS.',
+    fullDescription: 'Designed and built a standalone notification microservice consumed by multiple internal platforms, unifying email and SMS delivery behind a single event-driven interface so product teams didn\'t need to integrate providers directly.',
+    features: ['Email & SMS delivery', 'Event-driven triggers', 'Reusable across multiple platforms', 'Delivery status tracking'],
+    url: null,
+    screenshots: []
+  },
+  {
+    id: 'p_ema',
+    name: 'EMA Membership Management',
+    company: '360Ground',
+    role: 'System Architect & Lead Developer',
+    year: '2021–2025',
+    stack: ['Node.js', 'React', 'PostgreSQL'],
+    metric: 'Streamlined Registration',
+    description: 'Membership management system for EMA, simplifying registration and member communication.',
+    fullDescription: 'Built a membership management platform for the Ethiopian Medical Association (EMA) that simplified member registration, renewals, and ongoing communication with the membership base.',
+    features: ['Member Registration & Renewals', 'Member Communication Tools', 'Admin Dashboard'],
+    url: 'https://emamember.org',
+    screenshots: [
+        '/projects/ema/landing.png',
+        '/projects/ema/login.png'
+    ]
+  },
+  {
+    id: 'p_event',
+    name: 'Event Management System',
+    company: '360Ground',
+    role: 'System Architect & Lead Developer',
+    year: '2021–2025',
+    stack: ['Node.js', 'PostgreSQL', 'Microservices'],
+    metric: 'Secure Data Handling',
+    description: 'Scalable backend for an event management system handling event and customer data.',
+    fullDescription: 'Created a scalable backend for an event management system, ensuring secure handling of event data and customer information at scale.',
+    features: ['Event Lifecycle Management', 'Secure Customer Data Handling', 'Scalable Backend Architecture'],
+    url: null,
+    screenshots: []
+  },
+  {
+    id: 'p_ats_auth',
+    name: 'ATS Authentication Microservice',
+    company: '360Ground',
+    role: 'System Architect & Lead Developer',
+    year: '2021–2025',
+    stack: ['Node.js', 'Microservices', 'Security'],
+    metric: 'Secure User Management',
+    description: 'Authentication microservice for ATS enabling seamless, secure user management.',
+    fullDescription: 'Designed and implemented a dedicated authentication microservice for an Applicant Tracking System (ATS), enabling seamless and secure user management shared across the platform\'s services.',
+    features: ['Centralized Authentication', 'Secure Session Management', 'Shared Across Microservices'],
+    url: null,
+    screenshots: []
+  },
+  {
+    id: 'p_oromia',
+    name: 'Oromia Court Management System',
+    company: 'Smartlink Technologies',
+    role: 'Senior Full Stack Developer',
+    year: '2026',
+    stack: ['React', 'Node.js', 'Real-time', 'Security'],
+    metric: 'Device-Trust Auth',
+    description: 'Centralized case management platform streamlining judicial workflows for the Oromia court system.',
+    fullDescription: 'Contributed to the Oromia Court Management System, a centralized case management platform for the judiciary. Implemented a real-time internal chat system for secure communication between judges, clerks, and court staff, a queue management system to optimize hearing schedules and reduce delays, a device-based authentication system requiring a previously trusted device to approve logins from new devices, and comprehensive audit logging for transparency and compliance.',
+    features: ['Centralized Case Management', 'Real-time Internal Chat', 'Hearing Queue Management', 'Trusted-Device Authentication', 'Audit Logging & Activity Tracking'],
+    url: 'https://osc.gov.et',
+    screenshots: [
+        '/projects/oromia/home.png',
+        '/projects/oromia/services.png',
+        '/projects/oromia/about.png',
+        '/projects/oromia/sign-in.png'
+    ]
+  },
+  {
+    id: 'p_geobit',
+    name: 'Geospatial Organization Platform',
+    company: 'Geobit',
+    role: 'Mobile & Web Developer',
+    year: '2024',
+    stack: ['React', 'Mobile', 'GIS', 'Real-time'],
+    metric: 'Interactive Map Tooling',
+    description: 'Geospatial mapping platform for organizations to create, manage, and visualize areas of interest.',
+    fullDescription: 'Contributed to a geospatial mapping platform enabling organizations to create, manage, and visualize custom areas of interest with interactive map-based tools. Built location-based data services associating events and assets with geographic locations in real time, a secure real-time chat system for team collaboration, and organization/team management modules supporting role-based collaboration and secure information sharing.',
+    features: ['Interactive Map-Based Tools', 'Real-time Location-Based Data', 'Secure Real-time Chat', 'Role-Based Org & Team Management'],
     url: null,
     screenshots: []
   }

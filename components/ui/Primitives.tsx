@@ -84,6 +84,15 @@ export const Dialog: React.FC<{ open: boolean; onOpenChange: (open: boolean) => 
     return () => { document.body.style.overflow = 'unset'; };
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onOpenChange(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open, onOpenChange]);
+
   if (!open || !mounted) return null;
 
   const portalRoot = document.getElementById('portal-root') || document.body;
@@ -99,11 +108,15 @@ export const Dialog: React.FC<{ open: boolean; onOpenChange: (open: boolean) => 
 };
 
 export const DialogContent: React.FC<{ children: React.ReactNode; className?: string; onClose: () => void }> = ({ children, className = '', onClose }) => (
-  <div className={`relative z-[10000] grid w-full max-w-lg gap-4 border bg-background p-6 shadow-2xl duration-200 sm:rounded-lg md:w-full md:max-w-3xl max-h-[85vh] overflow-y-auto ${className}`}>
-    <div className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none cursor-pointer bg-background/50 p-1" onClick={onClose}>
-      <X className="h-5 w-5" />
+  <div className={`relative z-[10000] flex flex-col w-full max-w-lg border bg-background shadow-2xl duration-200 sm:rounded-lg md:w-full md:max-w-3xl max-h-[85vh] overflow-hidden ${className}`}>
+    <button
+      type="button"
+      onClick={onClose}
+      className="absolute right-4 top-4 z-20 rounded-full opacity-80 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none cursor-pointer bg-background/90 backdrop-blur-sm p-1.5 border border-border shadow-sm"
+    >
+      <X className="h-4 w-4" />
       <span className="sr-only">Close</span>
-    </div>
+    </button>
     {children}
   </div>
 );
